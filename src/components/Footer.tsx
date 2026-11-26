@@ -111,6 +111,16 @@ export default function Footer() {
                   &bull; Download Resume (PDF)
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/zeeshan-alam-979529242"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transition-colors hover:text-[#f2542d]"
+                >
+                  &bull; LinkedIn Profile
+                </a>
+              </li>
             </ul>
           </div>
 

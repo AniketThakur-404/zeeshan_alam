@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowUpRight, CheckCircle2, Calendar, Building2 } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Globe, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -21,33 +21,32 @@ import { useSmoothScroll } from "@/components/SmoothScrollProvider";
 gsap.registerPlugin(ScrollTrigger);
 
 const CATEGORIES = [
-  "All Works",
-  "SaaS SEO",
-  "E-Commerce",
-  "Technical SEO",
-  "Local & Authority",
+  "All Projects",
+  "Agency & Digital",
+  "Platforms & SaaS",
+  "E-Commerce & Brands",
 ] as const;
 
 type CategoryFilter = (typeof CATEGORIES)[number];
 
 export default function PortfolioShowcase() {
   const { scrollTo } = useSmoothScroll();
-  const [category, setCategory] = useState<CategoryFilter>("All Works");
+  const [category, setCategory] = useState<CategoryFilter>("All Projects");
   const [selected, setSelected] = useState<CaseStudyTile | null>(null);
 
   const filtered = useMemo(() => {
-    if (category === "All Works") return CASE_STUDIES;
+    if (category === "All Projects") return CASE_STUDIES;
     return CASE_STUDIES.filter((item) => item.category === category);
   }, [category]);
 
-  // Arrange filtered case studies into justified "two" and spotlight "center" rows
+  // Arrange active SEO projects into justified "two" and spotlight "center" rows
   const rows: Row[] = useMemo(() => {
-    if (filtered.length === 6) {
+    if (filtered.length === 7) {
       return [
         { kind: "two", tiles: [filtered[0], filtered[1]] },
         { kind: "center", tiles: [filtered[2]] },
         { kind: "two", tiles: [filtered[3], filtered[4]] },
-        { kind: "center", tiles: [filtered[5]] },
+        { kind: "two", tiles: [filtered[5], filtered[6]] },
       ];
     }
     const built: Row[] = [];
@@ -75,38 +74,50 @@ export default function PortfolioShowcase() {
     <>
       <ScaleGallery
         id="portfolio"
-        kicker="Portfolio"
-        heading="My Amazing Works"
-        note="Verified Search Console, GA4, Ahrefs, and Semrush campaign snapshots. Hover any report and click to inspect full before/after deliverables."
+        kicker="SEO Projects"
+        heading="My SEO Projects"
+        note="Active Search Engine Optimization campaigns across agencies, SaaS utilities, rewards platforms, and e-commerce brands. Hover and click any project banner to view scope & deliverables."
         rows={rows}
         onOpen={handleOpen}
         headerActions={
-          <div className="mt-7 flex justify-center">
-            <Tabs value={category} onValueChange={(v) => setCategory(v as CategoryFilter)}>
-              <TabsList className="flex h-auto flex-wrap justify-center gap-1 rounded-full border border-[#eae6e0] bg-[#faf8f5] p-1.5">
-                {CATEGORIES.map((cat) => (
-                  <TabsTrigger
-                    key={cat}
-                    value={cat}
-                    className="rounded-full px-4 py-1.5 text-xs font-semibold data-active:bg-[#f2542d] data-active:text-white"
-                  >
-                    {cat}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-            </Tabs>
+          <div className="mt-8 space-y-6">
+            {/* Project section overview banner image */}
+            <div className="mx-auto max-w-5xl overflow-hidden rounded-2xl border border-[#eae6e0] shadow-[0_24px_55px_-28px_rgba(15,23,42,0.3)]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/projects/projects-section-banner.png"
+                alt="Active SEO Portfolio banner listing Go Hype Media, Catalance, Assured Rewards, Mywebrank, Moksh Promotions, Tax flow, and Xelectron"
+                className="w-full object-cover"
+              />
+            </div>
+
+            <div className="flex justify-center">
+              <Tabs value={category} onValueChange={(v) => setCategory(v as CategoryFilter)}>
+                <TabsList className="flex h-auto flex-wrap justify-center gap-1 rounded-full border border-[#eae6e0] bg-[#faf8f5] p-1.5">
+                  {CATEGORIES.map((cat) => (
+                    <TabsTrigger
+                      key={cat}
+                      value={cat}
+                      className="rounded-full px-4 py-1.5 text-xs font-semibold data-active:bg-[#f2542d] data-active:text-white"
+                    >
+                      {cat}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+              </Tabs>
+            </div>
           </div>
         }
         footerSlot={
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-            {category !== "All Works" && (
+            {category !== "All Projects" && (
               <Button
                 variant="outline"
                 size="lg"
-                onClick={() => setCategory("All Works")}
+                onClick={() => setCategory("All Projects")}
                 className="h-12 rounded-full border-[#eae6e0] px-7 text-sm font-semibold"
               >
-                Show All 6 Case Studies
+                Show All 7 Projects
               </Button>
             )}
             <Button
@@ -114,7 +125,7 @@ export default function PortfolioShowcase() {
               onClick={() => scrollTo("#contact", -64)}
               className="h-12 rounded-full bg-[#f2542d] px-8 text-sm font-semibold text-white shadow-[0_14px_30px_-10px_rgba(242,84,45,0.45)] hover:bg-[#d9431f]"
             >
-              View All Works &amp; Request Audit
+              Request an SEO Audit
               <ArrowUpRight className="size-4" />
             </Button>
           </div>
@@ -135,8 +146,8 @@ export default function PortfolioShowcase() {
                     {selected.client}
                   </Badge>
                   <Badge variant="outline" className="gap-1 font-mono text-xs">
-                    <Calendar className="size-3" />
-                    {selected.duration}
+                    <Globe className="size-3" />
+                    {selected.domain}
                   </Badge>
                 </div>
                 <DialogTitle className="pt-2 font-serif text-3xl font-semibold text-[#22252a]">
@@ -147,7 +158,7 @@ export default function PortfolioShowcase() {
                 </DialogDescription>
               </DialogHeader>
 
-              <div className="overflow-hidden rounded-xl border border-[#eae6e0] bg-[#f8fafc]">
+              <div className="overflow-hidden rounded-xl border border-[#eae6e0] bg-[#1e2530]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={selected.src}
@@ -157,25 +168,19 @@ export default function PortfolioShowcase() {
               </div>
 
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-                {selected.kpis.map((kpi) => (
+                {selected.focusAreas.map((area) => (
                   <div
-                    key={kpi.label}
+                    key={area.label}
                     className="rounded-xl border border-[#eae6e0] bg-[#faf8f5] p-3.5"
                   >
-                    <p className="text-xs font-medium text-[#5f6672]">{kpi.label}</p>
-                    <p className="mt-1 font-mono text-lg font-bold text-[#22252a]">
-                      {kpi.after}
-                    </p>
-                    <p className="mt-0.5 text-xs text-[#5f6672]">
-                      From {kpi.before}{" "}
-                      <span className="font-semibold text-[#059669]">({kpi.delta})</span>
-                    </p>
+                    <p className="text-xs font-medium text-[#5f6672]">{area.label}</p>
+                    <p className="mt-1 text-sm font-bold text-[#22252a]">{area.value}</p>
                   </div>
                 ))}
               </div>
 
               <div>
-                <h4 className="text-sm font-bold text-[#22252a]">Key Deliverables</h4>
+                <h4 className="text-sm font-bold text-[#22252a]">SEO Scope &amp; Deliverables</h4>
                 <ul className="mt-2.5 space-y-2">
                   {selected.deliverables.map((del) => (
                     <li key={del} className="flex items-start gap-2 text-sm text-[#5f6672]">
@@ -201,7 +206,7 @@ export default function PortfolioShowcase() {
                   }}
                   className="rounded-full bg-[#f2542d] text-white hover:bg-[#d9431f]"
                 >
-                  Request Similar Growth
+                  Discuss Similar SEO Project
                   <ArrowUpRight className="size-4" />
                 </Button>
               </div>

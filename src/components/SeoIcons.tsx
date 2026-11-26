@@ -127,19 +127,3 @@ export function LinkedinBrandIcon({ className = "size-4" }: { className?: string
     </svg>
   );
 }
-
-export function FacebookBrandIcon({ className = "size-4" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden>
-      <path d="M13.5 21V12.8H16.25L16.66 9.6H13.5V7.56C13.5 6.63 13.76 6 15.09 6H16.78V3.14C16.49 3.1 15.49 3.01 14.33 3.01C11.9 3.01 10.24 4.49 10.24 7.21V9.6H7.5V12.8H10.24V21H13.5Z" />
-    </svg>
-  );
-}
-
-export function XBrandIcon({ className = "size-4" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden>
-      <path d="M18.244 2.25H21.552L14.325 10.51L22.827 21.75H16.17L10.956 14.933L4.99 21.75H1.68L9.41 12.915L1.254 2.25H8.08L12.793 8.481L18.244 2.25ZM17.083 19.77H18.916L7.084 4.126H5.117L17.083 19.77Z" />
-    </svg>
-  );
-}

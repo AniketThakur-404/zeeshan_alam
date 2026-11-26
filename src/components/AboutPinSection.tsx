@@ -19,22 +19,22 @@ export default function AboutPinSection() {
         <>
           {/* Top-left floating experience card */}
           <div className="absolute top-6 left-6 z-10 rounded-2xl border border-white/80 bg-white/95 px-5 py-3.5 shadow-xl backdrop-blur-sm sm:top-10 sm:left-8">
-              <p className="font-serif text-2xl font-bold leading-none text-[#f2542d]">
-                SEO Executive
-              </p>
-              <p className="mt-1.5 text-xs font-semibold tracking-wide text-[#302d29]">
-                Gohype Media Pvt. Ltd.
-              </p>
+            <p className="font-serif text-2xl font-bold leading-none text-[#f2542d]">
+              SEO Executive
+            </p>
+            <p className="mt-1.5 text-xs font-semibold tracking-wide text-[#302d29]">
+              Gohype Media Pvt. Ltd.
+            </p>
           </div>
 
           {/* Bottom-right floating education & dev card */}
           <div className="absolute right-6 bottom-6 z-10 rounded-2xl border border-white/80 bg-white/95 px-5 py-3.5 shadow-xl backdrop-blur-sm sm:right-8 sm:bottom-10">
-              <p className="font-serif text-2xl font-bold leading-none text-[#4f46e5]">
-                WP &amp; Shopify
-              </p>
-              <p className="mt-1.5 text-xs font-semibold tracking-wide text-[#302d29]">
-                BCA &bull; Jamia Hamdard Univ.
-              </p>
+            <p className="font-serif text-2xl font-bold leading-none text-[#4f46e5]">
+              WP &amp; Shopify
+            </p>
+            <p className="mt-1.5 text-xs font-semibold tracking-wide text-[#302d29]">
+              BCA &bull; Jamia Hamdard Univ.
+            </p>
           </div>
         </>
       }
@@ -57,18 +57,18 @@ export default function AboutPinSection() {
       </p>
 
       <div className="flex flex-wrap gap-2">
-          {
-            ["Technical & On-Page SEO", "WordPress & WooCommerce", "Shopify Support"].map((tag) => (
-              <Badge
-                key={tag}
-                variant="secondary"
-                className="gap-1.5 rounded-full border border-[#eae6e0] bg-[#faf8f5] px-3.5 py-1.5 text-xs font-medium text-[#302d29]"
-              >
-                <CheckCircle2 className="size-3.5 text-[#f2542d]" />
-                {tag}
-              </Badge>
-            ))
-          }
+        {
+          ["Technical & On-Page SEO", "WordPress & WooCommerce", "Shopify Support"].map((tag) => (
+            <Badge
+              key={tag}
+              variant="secondary"
+              className="gap-1.5 rounded-full border border-[#eae6e0] bg-[#faf8f5] px-3.5 py-1.5 text-xs font-medium text-[#302d29]"
+            >
+              <CheckCircle2 className="size-3.5 text-[#f2542d]" />
+              {tag}
+            </Badge>
+          ))
+        }
       </div>
 
       <div className="mt-1 flex flex-wrap items-center gap-3">

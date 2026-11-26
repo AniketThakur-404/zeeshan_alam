@@ -1,24 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Globe, TrendingUp } from "lucide-react";
+import { ArrowUpRight, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useSmoothScroll } from "@/components/SmoothScrollProvider";
 import {
   BullseyeSearchIcon,
-  FacebookBrandIcon,
   LinkedinBrandIcon,
   SeoMagnifierIcon,
-  XBrandIcon,
 } from "@/components/SeoIcons";
 
-const SOCIALS = [
-  { label: "LinkedIn", href: "#contact", Icon: LinkedinBrandIcon },
-  { label: "Facebook", href: "#contact", Icon: FacebookBrandIcon },
-  { label: "X", href: "#contact", Icon: XBrandIcon },
-  { label: "Website", href: "#portfolio", Icon: Globe },
-];
+const LINKEDIN_URL = "https://www.linkedin.com/in/zeeshan-alam-979529242";
 
 export default function HeroSection() {
   const { scrollTo } = useSmoothScroll();
@@ -113,24 +106,18 @@ export default function HeroSection() {
               <ArrowUpRight className="size-4" />
             </Button>
 
-            <div className="flex items-center gap-2.5">
-              {SOCIALS.map(({ label, href, Icon }) => (
-                <motion.a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollTo(href, -64);
-                  }}
-                  whileHover={{ y: -3, scale: 1.06 }}
-                  whileTap={{ scale: 0.94 }}
-                  className="flex size-10 items-center justify-center rounded-full border border-[#e6e2db] bg-white text-[#302d29] shadow-xs transition-colors hover:border-[#f2542d] hover:text-[#f2542d]"
-                >
-                  <Icon className="size-4" />
-                </motion.a>
-              ))}
-            </div>
+            <motion.a
+              href={LINKEDIN_URL}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Zeeshan Alam on LinkedIn"
+              whileHover={{ y: -3, scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+              className="inline-flex h-12 items-center gap-2 rounded-full border border-[#e6e2db] bg-white px-5 text-sm font-semibold text-[#302d29] shadow-xs transition-colors hover:border-[#0a66c2] hover:text-[#0a66c2]"
+            >
+              <LinkedinBrandIcon className="size-4" />
+              <span>LinkedIn</span>
+            </motion.a>
           </motion.div>
         </motion.div>
 
@@ -194,10 +181,10 @@ export default function HeroSection() {
               <div className="flex items-center gap-1.5">
                 <span className="font-mono text-sm font-bold text-[#22252a]">WP &amp; Shopify</span>
                 <Badge className="h-4 bg-[#dcfce7] px-1.5 text-[10px] font-semibold text-[#166534] hover:bg-[#dcfce7]">
-                  +342% SEO
+                  SEO Ready
                 </Badge>
               </div>
-              <p className="text-[11px] text-[#5f6672]">Fast Storefronts &amp; Rankings</p>
+              <p className="text-[11px] text-[#5f6672]">Core Web Vitals &amp; Rankings</p>
             </div>
           </motion.div>
         </motion.div>

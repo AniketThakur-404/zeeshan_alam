@@ -6,7 +6,7 @@
 }
 
 .sg__header {
-  max-width: 720px;
+  max-width: 1120px;
   margin: 0 auto clamp(42px, 7vh, 72px);
   text-align: center;
 }
